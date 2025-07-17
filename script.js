@@ -13,6 +13,16 @@ function startGame() {
   if (!username) return alert("Please enter your X username!");
   document.querySelector(".username-input").style.display = "none";
   document.querySelector(".game").style.display = "block";
+
+  // Prime audio so browser allows playback
+  ["correct", "wrong", "congrats"].forEach(sound => {
+    const a = new Audio(sound + ".mp3");
+    a.play().then(() => {
+      a.pause();
+      a.currentTime = 0;
+    }).catch(() => {});
+  });
+
   loadQuestion();
 }
 
@@ -73,6 +83,6 @@ function endGame() {
 }
 
 function playSound(type) {
-  const audio = new Audio(type + ".mp3"); // updated to root folder
-  audio.play().catch(() => {}); // prevent autoplay errors
+  const audio = new Audio(type + ".mp3");
+  audio.play().catch(() => {});
 }
