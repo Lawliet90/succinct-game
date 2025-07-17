@@ -1,4 +1,3 @@
-
 const questions = [
   { q: "What is the main benefit of ZK proofs?", a: "privacy" },
   { q: "Succinct is focused on scaling which blockchain?", a: "ethereum" },
@@ -74,6 +73,6 @@ function endGame() {
 }
 
 function playSound(type) {
-  const audio = new Audio("assets/" + type + ".mp3");
-  audio.play();
+  const audio = new Audio(type + ".mp3"); // updated to root folder
+  audio.play().catch(() => {}); // prevent autoplay errors
 }
